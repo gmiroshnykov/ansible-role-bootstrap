@@ -1,0 +1,9 @@
+- name: copy sysctl settings
+  copy:
+    src=sysctl.conf
+    dest=/etc/sysctl.d/42-tuning.conf
+  register: result
+
+- name: start procps service to apply new sysctl settings
+  service: name=procps state=started
+  when_changed: $result

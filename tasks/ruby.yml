@@ -1,0 +1,3 @@
+- name: install Ruby 1.9.3
+  apt: pkg=ruby1.9.3
+  when_string: $ansible_distribution_version == '12.04'

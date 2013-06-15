@@ -1,0 +1,14 @@
+- name: apt-get update
+  apt: update_cache=yes
+
+- name: install 'python-software-properties'
+  apt: pkg=python-software-properties
+  when_string: $ansible_distribution_version == '12.04'
+
+- name: install common packages
+  apt: pkg=$item
+  with_items:
+    - build-essential
+    - vim
+    - git
+    - htop

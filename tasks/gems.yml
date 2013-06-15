@@ -1,0 +1,4 @@
+- name: install common gems
+  gem: name=$item state=present
+  with_items:
+    - foreman
